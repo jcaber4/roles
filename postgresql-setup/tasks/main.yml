@@ -1,0 +1,20 @@
+---
+- name: Install PostgreSQL
+  become: yes
+  apt:
+    name: postgresql
+    state: present
+
+- name: Ensure PostgreSQL is started and enabled
+  become: yes
+  systemd:
+    name: postgresql
+    state: started
+    enabled: yes
+
+
+- name: Restart PostgreSQL
+  become: yes
+  systemd:
+    name: postgresql
+    state: restarted
